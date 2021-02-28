@@ -3,12 +3,12 @@ const menuActive = document.getElementsByClassName(`menu_active`)
 
 function menuOpen() {
     menu.forEach(el => {
-        if (el.closest(`li`).querySelectorAll(`ul`).length > 0) {
+        const menuChange = el.closest(`li`).querySelectorAll(`ul`);
+        if (menuChange.length > 0) {
             el.onclick = () => {
-                if (menuActive.length > 0) {
+                if (menuActive.length > 0 && !menuChange[0].classList.contains(`menu_active`)) {
                     menuActive[0].classList.remove(`menu_active`);
                 }
-                const menuChange = el.closest(`li`).querySelectorAll(`ul`);
                 menuChange[0].classList.toggle(`menu_active`);
                 return false;
             }
